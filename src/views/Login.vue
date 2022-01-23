@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style scoped>
-*{
-  font-family: 'Montserrat', sans-serif;
-}
   .main-container{
     display:flex;
     justify-content:center;
