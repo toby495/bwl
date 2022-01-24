@@ -13,5 +13,7 @@ export default () => ({
     passwordInput:'lightskyblue',
     confirmPasswordInput:'lightskyblue',
     loginButton:true,
-    currentUser:''
+    currentUser:'',
+    errorLogAlert:false,
+    createUserErrorAler:''
 });

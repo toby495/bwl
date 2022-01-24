@@ -13,17 +13,21 @@ export const createUser = (state, payload) => {
     let user = {...state.users.find(element => element.email === payload.email)}
     let date = new Date();
     if(user.email === payload.email){
-        alert('Usurio existente');
+        state.createUserErrorAler = true
     }else{
-        alert('Usuario creado con éxito')
-        state.loginState= true;
-        state.users.push({
-         email: payload.email,
-         password: payload.password,
-         fullName: payload.fullName,
-         createdDate:`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-        });        
-        state.buttonState = true;
+        state.createUserErrorAler = false
+        setTimeout(() => {
+            state.loginState= true;
+            state.users.push({
+             email: payload.email,
+             password: payload.password,
+             fullName: payload.fullName,
+             createdDate:`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+            });        
+            state.buttonState = true;
+            state.createUserErrorAler = ''
+        }, 2000);
+       
     }
 }
 
@@ -64,4 +68,9 @@ export const getCurrentUser = (state, payload) =>{
     state.currentUser = payload.currentUserIndex;
     state.users[state.currentUser].logTime = payload.logTime;
     state.users[state.currentUser].lastLoginDate = payload.lastLoginDate;
+}
+ 
+//Activa la alerta error 
+export const activatedErrorAlert = (state, payload) =>{
+    state.errorLogAlert = payload;
 }

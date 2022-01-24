@@ -16,10 +16,18 @@
 
       <button :disabled="buttonState" @click="createUser" type="submit">Registrarme</button>
     </div>
+    <v-alert v-if="createUserErrorAler" border="start" color="red" class="ma-2">
+      Usuario existente
+    </v-alert>
+    <v-alert v-else-if="createUserErrorAler === false" border="start" color="green" class="ma-2">
+      Usuario creado
+    </v-alert>
+      
 
     <div class="container" style="background-color: #f1f1f1">
          <button  type="button" @click="changeToLogin" class="cancelbtn">Cerrar</button>
     </div>
+
 
   </div>
 </template>
@@ -41,7 +49,7 @@ export default {
    },
 
   computed:{
-      ...mapState('loginModule',['buttonState','passwordInput','confirmPasswordInput',])
+      ...mapState('loginModule',['buttonState','passwordInput','confirmPasswordInput','errorLogAlert','createUserErrorAler'])
   },
 
   methods: {
